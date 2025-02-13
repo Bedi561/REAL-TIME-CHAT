@@ -7,8 +7,7 @@
   "dev": "next dev",
   "build": "next build",
   "lint": "next lint",
-  "develop": "strapi develop",
-  "start": "concurrently \"npm run develop\" \"npm run socket-start\"",
+ "start": "concurrently \"npm run strapi-start\" \"npm run socket-start\"",
   "strapi-start": "npm run develop",  
   "socket-start": "cd socket-server && node socket-server.js",  
   "install-deps": "npm install"
