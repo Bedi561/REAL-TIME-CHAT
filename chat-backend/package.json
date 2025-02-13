@@ -4,12 +4,12 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
-    "build": "strapi build",
-    "deploy": "strapi deploy",
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "strapi": "strapi"
-  },
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start & npm run strapi-start & node socket-server.js",
+    "lint": "next lint",
+    "strapi-start": "npm run develop"
+  },  
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.0",
     "@strapi/plugin-users-permissions": "5.10.0",
