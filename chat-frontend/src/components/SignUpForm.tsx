@@ -34,6 +34,7 @@ const SignUpForm = () => {
       };
 
       const endpoint = "http://localhost:1337/api/auth/local/register"; // Strapi's register endpoint
+      // const registerEndpoint = "https://real-time-chat-h08x.onrender.com/api/auth/local/register"; // Strapi's register endpoint
 
       // Send POST request to the register endpoint
       const response = await axios.post(endpoint, data);

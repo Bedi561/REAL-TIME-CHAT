@@ -16,6 +16,7 @@ const handleAuth = async (e: React.FormEvent) => {
   try {
     const data = { identifier: email, password }; // Strapi requires `identifier` instead of `email`.
     const endpoint = "http://localhost:1337/api/auth/local"; // Strapi's login endpoint (update if deployed).
+    // const endpoint = "https://real-time-chat-h08x.onrender.com/api/auth/local"; // Strapi's login endpoint
 
     const response = await axios.post(endpoint, data);
 

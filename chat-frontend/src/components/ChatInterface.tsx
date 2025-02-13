@@ -20,6 +20,7 @@ const ChatInterface = () => {
     console.log("Initializing WebSocket connection...");
 
     const newSocket = io("http://localhost:3001"); // Update with your backend URL
+    // const newSocket = io("https://real-time-chat-h08x.onrender.com"); 
     setSocket(newSocket);
 
     // WebSocket connection events
