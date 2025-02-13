@@ -3,19 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
- "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "lint": "next lint",
-"start": "strapi start", 
-  "develop": "strapi develop",
-  "install-deps": "npm install"
-},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "next lint",
+    "start": "strapi start",
+    "develop": "strapi develop",
+    "install-deps": "npm install"
+  },
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.0",
     "@strapi/plugin-users-permissions": "5.10.0",
     "@strapi/strapi": "5.10.0",
     "better-sqlite3": "11.3.0",
+    "next": "^15.1.7",
     "pg": "^8.13.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
