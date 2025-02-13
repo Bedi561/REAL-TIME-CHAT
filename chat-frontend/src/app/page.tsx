@@ -1,4 +1,5 @@
-'use client'
+"use client";
+
 import { useState } from "react";
 import LoginForm from "@/components/LoginForm"; // Import your LoginForm component
 import ChatInterface from "@/components/ChatInterface"; // Import your ChatInterface component
@@ -11,7 +12,7 @@ export default function Home() {
   };
 
   if (isAuthenticated) {
-    return <ChatInterface />;
+    return <ChatInterface setIsAuthenticated={setIsAuthenticated} />;
   }
 
   return <LoginForm onLoginSuccess={handleAuthSuccess} />;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useEffect, useState } from "react";
@@ -7,7 +8,11 @@ import { io, Socket } from "socket.io-client";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const ChatInterface = () => {
+interface ChatInterfaceProps {
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ChatInterface: React.FC<ChatInterfaceProps> = ({ setIsAuthenticated }) => {
   const { theme, toggleTheme } = useTheme();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<{ id: number; text: string; sender: string; timestamp: Date }[]>([]);
@@ -19,8 +24,8 @@ const ChatInterface = () => {
   useEffect(() => {
     console.log("Initializing WebSocket connection...");
 
-    const newSocket = io("http://localhost:3001"); // Update with your backend URL
-    // const newSocket = io("https://real-time-chat-h08x.onrender.com"); 
+    // const newSocket = io("http://localhost:3001"); // Update with your backend URL
+    const newSocket = io("https://real-time-chat-socket-vzh2.onrender.com");
     setSocket(newSocket);
 
     // WebSocket connection events
@@ -96,9 +101,11 @@ const ChatInterface = () => {
 
             // Optional: Remove Authorization header
             delete axios.defaults.headers.common["Authorization"];
-        
+
+            setIsAuthenticated(false); // Set isAuthenticated to false after logging out
+            
             // Redirect to login page
-            router.push("/");
+            router.push("/"); // Redirects to the login page
           }}
           className="p-2 rounded-full hover:bg-red-500 hover:text-white transition-colors"
         >
@@ -131,7 +138,7 @@ const ChatInterface = () => {
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);
-              console.log("Message input changed:", e.target.value);
+              // console.log("Message input changed:", e.target.value);
             }}
             placeholder="Type a message..."
             className="flex-1 bg-background rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
