@@ -9,6 +9,7 @@
   "lint": "next lint",
  "start": "concurrently \"npm run strapi-start\" \"npm run socket-start\"",
   "strapi-start": "npm run develop",  
+  "develop": "strapi develop",
   "socket-start": "cd socket-server && node socket-server.js",  
   "install-deps": "npm install"
 },
