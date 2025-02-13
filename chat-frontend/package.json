@@ -2,13 +2,12 @@
   "name": "chat-frontend",
   "version": "0.1.0",
   "private": true,
- "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start & npm run strapi-start & node socket-server.js",
-  "lint": "next lint",
-  "strapi-start": "npm run develop"
-},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "@radix-ui/react-tooltip": "^1.1.8",
     "lucide-react": "^0.475.0",
