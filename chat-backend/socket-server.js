@@ -1,7 +1,7 @@
 const { Server } = require("socket.io");
 const http = require("http");
 
-const PORT = 3001; // Separate port for Socket.IO server
+const PORT = process.env.PORT || 10000;
 
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
