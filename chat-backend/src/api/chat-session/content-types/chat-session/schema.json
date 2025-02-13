@@ -1,0 +1,23 @@
+{
+    "kind": "collectionType",
+    "collectionName": "chat_sessions",
+    "info": {
+      "singularName": "chat-session",
+      "pluralName": "chat-sessions",
+      "displayName": "Chat Session"
+    },
+    "attributes": {
+      "user": {
+        "type": "relation",
+        "relation": "manyToOne",
+        "target": "plugin::users-permissions.user"
+      },
+      "messages": {
+        "type": "text"
+      },
+      "timestamp": {
+        "type": "datetime"
+      }
+    }
+  }
+  
