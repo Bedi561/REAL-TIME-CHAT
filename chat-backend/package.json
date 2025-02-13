@@ -4,13 +4,14 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "lint": "next lint",
-    "start": "strapi start",
-    "develop": "strapi develop",
-    "install-deps": "npm install"
-  },
+  "dev": "strapi develop",     
+  "build": "strapi build",     
+  "lint": "eslint .",          
+  "start": "strapi start",     
+  "develop": "strapi develop", 
+  "install-deps": "npm install" 
+}
+,
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.0",
     "@strapi/plugin-users-permissions": "5.10.0",
