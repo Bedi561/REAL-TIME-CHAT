@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start & npm run strapi-start & node socket-server.js",
-    "lint": "next lint",
-    "strapi-start": "npm run develop"
-  },  
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start & npm run strapi-start & node socket-server.js",
+  "lint": "next lint",
+  "strapi-start": "npm run develop",
+  "develop": "strapi develop"   
+},
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.0",
     "@strapi/plugin-users-permissions": "5.10.0",
