@@ -11,64 +11,29 @@ const LoginForm = ({ onLoginSuccess }: { onLoginSuccess: () => void }) => {
   const [error, setError] = useState<{ title: string; description: string; variant: string } | null>(null);
   const router = useRouter();
 
-// const handleAuth = async (e: React.FormEvent) => {
-//   e.preventDefault();
-//   try {
-//     const data = { identifier: email, password }; // Strapi requires `identifier` instead of `email`.
-//     const endpoint = "http://localhost:1337/api/auth/local"; // Strapi's login endpoint (update if deployed).
-//     // const endpoint = "https://real-time-chat-n9q7.onrender.com/api/auth/local"; // Strapi's login endpoint
-
-//     const response = await axios.post(endpoint, data);
-
-//     // Extract JWT token and user data from the response
-//     const { jwt, user } = response.data;
-
-//     // Store token securely (preferably use cookies for production)
-//     localStorage.setItem("token", jwt);
-
-//     // Set token as a default Authorization header for future requests
-//     axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
-
-//     // Trigger success callback and navigate to home
-//     onLoginSuccess(); // Pass the `user` object to maintain user session state.
-//     // router.push("/home");
-//   } catch (err) {
-//     // Handle error gracefully
-//     setError({
-//       title: "Login Failed",
-//       description: "Invalid credentials or server error. Please try again.",
-//       variant: "destructive",
-//     });
-//   }
-// };
-
 const handleAuth = async (e: React.FormEvent) => {
   e.preventDefault();
   try {
-    const endpoint = "https://ytrdjthpheepajlwvvmb.supabase.co/auth/v1/token?grant_type=password";
+    const data = { identifier: email, password }; // Strapi requires `identifier` instead of `email`.
+    // const endpoint = "http://localhost:1337/api/auth/local"; // Strapi's login endpoint (update if deployed).
+    const endpoint = "https://real-time-chat-n9q7.onrender.com/api/auth/local"; // Strapi's login endpoint
 
-    const response = await axios.post(endpoint, {
-      email,
-      password,
-    }, {
-      headers: {
-        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0cmRqdGhwaGVlcGFqbHd2dm1iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxMDU4ODcsImV4cCI6MjA1ODY4MTg4N30.819tnBxugKZUd0zxs2P9qJ5SFeUdTnH-42pa987hG2Y",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post(endpoint, data);
 
-    const { access_token, user } = response.data;
+    // Extract JWT token and user data from the response
+    const { jwt, user } = response.data;
 
-    // Store token securely (preferably in HTTP-only cookies for production)
-    localStorage.setItem("token", access_token);
+    // Store token securely (preferably use cookies for production)
+    localStorage.setItem("token", jwt);
 
     // Set token as a default Authorization header for future requests
-    axios.defaults.headers.common["Authorization"] = `Bearer ${access_token}`;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 
-    // Trigger success callback
-    onLoginSuccess();
-
+    // Trigger success callback and navigate to home
+    onLoginSuccess(); // Pass the `user` object to maintain user session state.
+    // router.push("/home");
   } catch (err) {
+    // Handle error gracefully
     setError({
       title: "Login Failed",
       description: "Invalid credentials or server error. Please try again.",
@@ -76,6 +41,7 @@ const handleAuth = async (e: React.FormEvent) => {
     });
   }
 };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

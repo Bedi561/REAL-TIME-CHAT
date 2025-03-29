@@ -17,82 +17,46 @@ const SignUpForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(""); // State for error handling
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   if (password !== confirmPassword) {
-  //     setError("Passwords do not match. Please try again.");
-  //     return;
-  //   }
-
-  //   try {
-  //     // Prepare data for signup
-  //     const data = {
-  //       username: name, // Strapi expects 'username' for registration
-  //       email,
-  //       password,
-  //     };
-
-  //     const endpoint = "http://localhost:1337/api/auth/local/register"; // Strapi's register endpoint
-  //     // const endpoint = "https://real-time-chat-n9q7.onrender.com/api/auth/local/register"; // Strapi's register endpoint
-
-  //     // Send POST request to the register endpoint
-  //     const response = await axios.post(endpoint, data);
-
-  //     // Extract the JWT token and user data from the response
-  //     const { jwt, user } = response.data;
-
-  //     // Store the JWT token securely (for now, using localStorage)
-  //     localStorage.setItem("token", jwt);
-
-  //     // Redirect to home or another page
-  //     router.push("/");
-  //   } catch (err: any) {
-  //     // Handle error gracefully
-  //     if (err.response?.data?.error?.message) {
-  //       setError(err.response.data.error.message); // Show specific error from Strapi
-  //     } else {
-  //       setError("Something went wrong. Please try again.");
-  //     }
-  //   }
-  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     if (password !== confirmPassword) {
       setError("Passwords do not match. Please try again.");
       return;
     }
-  
+
     try {
-      const endpoint = "https://ytrdjthpheepajlwvvmb.supabase.co/auth/v1/signup";
-  
-      const response = await axios.post(endpoint, {
+      // Prepare data for signup
+      const data = {
+        username: name, // Strapi expects 'username' for registration
         email,
         password,
-      }, {
-        headers: {
-          apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0cmRqdGhwaGVlcGFqbHd2dm1iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxMDU4ODcsImV4cCI6MjA1ODY4MTg4N30.819tnBxugKZUd0zxs2P9qJ5SFeUdTnH-42pa987hG2Y",
-          "Content-Type": "application/json",
-        },
-      });
-  
-      const { access_token, user } = response.data;
-  
-      // Store the JWT token securely (preferably in HTTP-only cookies for production)
-      localStorage.setItem("token", access_token);
-  
+      };
+
+      // const endpoint = "http://localhost:1337/api/auth/local/register"; // Strapi's register endpoint
+      const endpoint = "https://real-time-chat-n9q7.onrender.com/api/auth/local/register"; // Strapi's register endpoint
+
+      // Send POST request to the register endpoint
+      const response = await axios.post(endpoint, data);
+
+      // Extract the JWT token and user data from the response
+      const { jwt, user } = response.data;
+
+      // Store the JWT token securely (for now, using localStorage)
+      localStorage.setItem("token", jwt);
+
       // Redirect to home or another page
       router.push("/");
     } catch (err: any) {
+      // Handle error gracefully
       if (err.response?.data?.error?.message) {
-        setError(err.response.data.error.message);
+        setError(err.response.data.error.message); // Show specific error from Strapi
       } else {
         setError("Something went wrong. Please try again.");
       }
     }
   };
-  
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8 animate-fadeIn">
